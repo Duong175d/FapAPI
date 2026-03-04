@@ -1,93 +1,151 @@
-# fap-api
+# FapAPI – FPT Academic Management API System
 
+FapAPI is a backend system developed using ASP.NET Core Web API to simulate and extend the core functionalities of FPT University's FAP (FPT Academic Portal).  
+The system provides APIs for attendance management, exam scheduling, timetable tracking, authentication, and notifications.  
 
+This API is designed to be consumed by a mobile application (MobiApp) for real-time academic data interaction.
 
-## Getting started
+---
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
+## 🚀 Project Overview
 
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
+FAP (FPT Academic Portal) is the internal academic management system used at FPT University.  
+It manages:
 
-## Add your files
+- Student attendance
+- Exam schedules
+- Timetables
+- Academic notifications
+- User roles (Student, Lecturer, Admin)
 
-- [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://docs.gitlab.com/topics/git/add_files/#add-files-to-a-git-repository) or push an existing Git repository with the following command:
+FapAPI replicates and extends these core features in a modular RESTful architecture.
 
-```
-cd existing_repo
-git remote add origin https://gitlab.com/prm3922/fap-api.git
-git branch -M main
-git push -uf origin main
-```
+---
 
-## Integrate with your tools
+## 🏗 System Architecture
 
-- [ ] [Set up project integrations](https://gitlab.com/prm3922/fap-api/-/settings/integrations)
+Client (Mobile App - MobiApp)
+        ↓
+RESTful API (FapAPI - ASP.NET Core Web API)
+        ↓
+SQL Database (MySQL)
 
-## Collaborate with your team
+- Authentication handled via JWT
+- Role-based authorization
+- EF Core for ORM
+- Service Layer pattern applied
 
-- [ ] [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
-- [ ] [Create a new merge request](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
-- [ ] [Automatically close issues from merge requests](https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
-- [ ] [Enable merge request approvals](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/)
-- [ ] [Set auto-merge](https://docs.gitlab.com/user/project/merge_requests/auto_merge/)
+---
 
-## Test and Deploy
+## 🔑 Core Features
 
-Use the built-in continuous integration in GitLab.
+### 1️⃣ Authentication & Authorization
+- Login with JWT token
+- Role-based access control (Student, Lecturer, Admin)
+- Secure password hashing
 
-- [ ] [Get started with GitLab CI/CD](https://docs.gitlab.com/ee/ci/quick_start/)
-- [ ] [Analyze your code for known vulnerabilities with Static Application Security Testing (SAST)](https://docs.gitlab.com/ee/user/application_security/sast/)
-- [ ] [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
-- [ ] [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/ee/user/clusters/agent/)
-- [ ] [Set up protected environments](https://docs.gitlab.com/ee/ci/environments/protected_environments.html)
+### 2️⃣ Attendance Management
+- Lecturer can create attendance sessions
+- Students' attendance stored and tracked
+- Generate attendance reports
+- Query attendance history
 
-***
+### 3️⃣ Exam Schedule Management
+- Admin creates exam schedule
+- System auto-assigns eligible students
+- Prevents overlapping exam slots
+- Assigns supervisors (lecturers) without schedule conflicts
+- Automatically generates 2nd FE exam (if required)
 
-# Editing this README
+### 4️⃣ Timetable Management
+- Manage class schedule
+- Slot-based timetable system
+- User-specific timetable query
 
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!). Thanks to [makeareadme.com](https://www.makeareadme.com/) for this template.
+### 5️⃣ Notification System
+- Send and retrieve notifications
+- Linked to user accounts
 
-## Suggestions for a good README
+---
 
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
+## 🧠 Business Logic Highlights
 
-## Name
-Choose a self-explaining name for your project.
+✔ Prevent duplicate exam scheduling  
+✔ Avoid overlapping time slots  
+✔ Auto student selection by subject & semester  
+✔ Role validation before data access  
+✔ Transaction-safe data updates  
 
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
+---
 
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
+## 🛠 Tech Stack
 
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
+- ASP.NET Core Web API
+- Entity Framework Core
+- MySQL
+- JWT Authentication
+- Service Layer Architecture
+- Git
 
-## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
+---
 
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
+## 📂 Project Structure
 
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
+Controllers/        → API Endpoints  
+Services/           → Business Logic Layer  
+Models/             → Database Entities  
+ViewModels/         → Request/Response Models  
+Program.cs          → Application Configuration  
 
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
+---
 
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
+## 📱 Mobile App Integration
 
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
+FapAPI is consumed by a mobile application (MobiApp).  
+The mobile app:
 
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
+- Calls login API to retrieve JWT
+- Sends token in Authorization header
+- Fetches attendance, timetable, exam schedules
+- Displays real-time academic data
 
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
+Example:
 
-## License
-For open source projects, say how it is licensed.
+Authorization: Bearer {JWT_TOKEN}
 
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+---
+
+## 🔒 Security Implementation
+
+- Password hashing
+- JWT expiration handling
+- Role-based authorization
+- Input validation
+- Secure transaction processing
+
+---
+
+## 🌍 Deployment
+
+- Designed for production-ready deployment
+- Environment-based configuration
+- Database connection string secured via appsettings
+
+---
+
+## 📌 Future Improvements
+
+- Redis caching for performance optimization
+- Docker containerization
+- CI/CD pipeline integration
+- API rate limiting
+- Logging & monitoring
+
+---
+
+## 👨‍💻 Author
+
+Hoang Nguyen Hai Duong  
+Backend Developer – ASP.NET Core  
+
+GitHub: https://github.com/Duong175d
