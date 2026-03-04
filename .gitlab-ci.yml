@@ -1,0 +1,11 @@
+deploy-be-dev:
+  stage: deploy
+  script:
+    - cd FAP-API
+    - dotnet publish -c Release -r linux-x64 --self-contained true -o ./publish
+    - sudo rsync -r --delete ./publish/ /var/www/fap_api/Deploy/
+    - sudo systemctl restart fap_api.service
+  only:
+    - main
+  tags:
+    - linux

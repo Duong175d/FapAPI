@@ -1,0 +1,15 @@
+# Ignore Visual Studio và các thư mục build
+.vs/
+bin/
+obj/
+
+# Ignore user-specific files của Visual Studio
+*.user
+*.suo
+*.vscode/
+
+# Ignore môi trường .NET
+*.dll
+*.exe
+*.pdb
+*.cache

@@ -1,0 +1,10 @@
+diff a/FAP-API/ViewModels/LoginInfo.cs b/FAP-API/ViewModels/LoginInfo.cs	(rejected hunks)
+@@ -10,5 +10,4 @@
+     {
+         public string IdToken { get; set; }
+     }
+-}
+-}
+\ No newline at end of file
++} 
+\ No newline at end of file
