@@ -1,6 +1,6 @@
 # FapAPI – FPT Academic Management API System
 
-FapAPI is a backend system developed using ASP.NET Core Web API to simulate and extend the core functionalities of FPT University's FAP (FPT Academic Portal).  
+FapAPI is a backend system developed using ASP.NET Core Web API to simulate(FPT Academic Portal).  
 The system provides APIs for attendance management, exam scheduling, timetable tracking, authentication, and notifications.  
 
 This API is designed to be consumed by a mobile application (MobiApp) for real-time academic data interaction.
@@ -82,7 +82,7 @@ SQL Database (MySQL)
 
 - ASP.NET Core Web API
 - Entity Framework Core
-- MySQL
+- SQL Service
 - JWT Authentication
 - Service Layer Architecture
 - Git
@@ -142,10 +142,3 @@ Authorization: Bearer {JWT_TOKEN}
 - Logging & monitoring
 
 ---
-
-## 👨‍💻 Author
-
-Hoang Nguyen Hai Duong  
-Backend Developer – ASP.NET Core  
-
-GitHub: https://github.com/Duong175d
